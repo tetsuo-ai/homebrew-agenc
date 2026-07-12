@@ -1,9 +1,9 @@
 class Agenc < Formula
   desc "Daemon-backed, terminal-native coding agent"
   homepage "https://github.com/tetsuo-ai/agenc-releases"
-  url "https://github.com/tetsuo-ai/agenc-releases/releases/download/agenc-v0.4.2/agenc-installer.tar.gz"
-  sha256 "f2187d3a3a8d9dacb5aa893f36a2881c49ba5b1db354dfbb541f84557666d632"
-  version "0.4.2"
+  url "https://github.com/tetsuo-ai/agenc-releases/releases/download/agenc-v0.4.3/agenc-installer.tar.gz"
+  sha256 "7941524bd5d43b8d99452a044e66a23be7fa5497a9554473b5267fb65e9e0113"
+  version "0.4.3"
   license "MIT"
 
   depends_on "node"
