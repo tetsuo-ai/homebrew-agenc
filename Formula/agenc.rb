@@ -1,11 +1,12 @@
 class Agenc < Formula
   desc "Daemon-backed, terminal-native coding agent"
   homepage "https://github.com/tetsuo-ai/agenc-core"
-  version "0.11.2"
-  license "MIT"
-
   url "https://github.com/tetsuo-ai/agenc-releases/releases/download/agenc-v0.11.2/agenc-runtime-0.11.2-darwin-#{Hardware::CPU.arm? ? "arm64" : "x64"}-node26-abi147.tar.gz"
-  sha256 Hardware::CPU.arm? ? "daa200674c110b323d76e92b391864074b3b1b53fa4fbb2f99270ac47c788c78" : "13ac533075de6ad5e9b5234f23a5e62bbecb77e18afc444d91192d63a6148258"
+  version "0.11.2"
+  arm64_sha256 = "daa200674c110b323d76e92b391864074b3b1b53fa4fbb2f99270ac47c788c78"
+  x64_sha256 = "13ac533075de6ad5e9b5234f23a5e62bbecb77e18afc444d91192d63a6148258"
+  sha256 Hardware::CPU.arm? ? arm64_sha256 : x64_sha256
+  license "MIT"
 
   # The runtime artifact includes its reviewed Node 26.5.0 executable. Keep
   # ripgrep as the only host tool dependency used by the coding-agent surface.
