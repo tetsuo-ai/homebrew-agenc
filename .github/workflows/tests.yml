@@ -30,3 +30,11 @@ jobs:
       - run: brew test-bot --only-setup
       - run: brew test-bot --only-tap-syntax
       - run: brew test-bot --only-formulae
+
+      - name: Install and test AgenC
+        shell: bash
+        run: |
+          set -euo pipefail
+          brew uninstall --formula --force tetsuo-ai/agenc/agenc 2>/dev/null || true
+          brew install --formula --build-from-source tetsuo-ai/agenc/agenc
+          brew test tetsuo-ai/agenc/agenc

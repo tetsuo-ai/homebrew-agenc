@@ -1,10 +1,10 @@
 class Agenc < Formula
   desc "Daemon-backed, terminal-native coding agent"
   homepage "https://github.com/tetsuo-ai/agenc-core"
-  url "https://github.com/tetsuo-ai/agenc-releases/releases/download/agenc-v0.12.0/agenc-runtime-0.12.0-darwin-#{Hardware::CPU.arm? ? "arm64" : "x64"}-node26-abi147.tar.gz"
-  version "0.12.0"
-  arm64_sha256 = "4c12ec31e900eb4ebf714824bf4309ab78853eab6090936ca178432ecb74f429"
-  x64_sha256 = "9eac311d4979e4dd60a8f189e144a4bc4fec2e8d5255e2ac1482cf0ba62cd436"
+  url "https://github.com/tetsuo-ai/agenc-releases/releases/download/agenc-v0.13.0/agenc-runtime-0.13.0-darwin-#{Hardware::CPU.arm? ? "arm64" : "x64"}-node26-abi147.tar.gz"
+  version "0.13.0"
+  arm64_sha256 = "bc770395e0a39cc7a2a9c0b6d14fb9bc2f052333c49aab247583716293259ffe"
+  x64_sha256 = "e51de8150181b803ccfabcd071fed0ee52a3710fb877db3c5f440bca717d23f2"
   sha256 Hardware::CPU.arm? ? arm64_sha256 : x64_sha256
   license "MIT"
 
@@ -15,7 +15,7 @@ class Agenc < Formula
 
   def install
     odie "AgenC requires macOS 13.5 or newer." if MacOS.full_version < "13.5"
-    libexec.install "node_modules"
+    (libexec/"node_modules").install buildpath.children
 
     node_bin = libexec/"node_modules/.agenc-node/bin/node"
     runtime_bin = libexec/"node_modules/@tetsuo-ai/runtime/bin/agenc"
