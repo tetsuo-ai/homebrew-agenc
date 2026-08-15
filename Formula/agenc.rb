@@ -1,10 +1,10 @@
 class Agenc < Formula
   desc "Daemon-backed, terminal-native coding agent"
   homepage "https://github.com/tetsuo-ai/agenc-core"
-  url "https://github.com/tetsuo-ai/agenc-releases/releases/download/agenc-v0.15.0/agenc-runtime-0.15.0-darwin-#{Hardware::CPU.arm? ? "arm64" : "x64"}-node26-abi147.tar.gz"
-  version "0.15.0"
-  arm64_sha256 = "b4929b766abdd754e4d101c410e039d547ed7a34b89aa4870d9753a8ab4272ad"
-  x64_sha256 = "d5842d0bcc0ef6d9615ed7ceb62a596248a5d5c0eb30cedf0179a7d2091774e5"
+  url "https://github.com/tetsuo-ai/agenc-releases/releases/download/agenc-v0.16.0/agenc-runtime-0.16.0-darwin-#{Hardware::CPU.arm? ? "arm64" : "x64"}-node26-abi147.tar.gz"
+  version "0.16.0"
+  arm64_sha256 = "b677c6df4918f57cc569846a5b9fc478b7af09cad875703bcca0d2b570c43c55"
+  x64_sha256 = "27c5ea64a8378efff327df72ac8e07d325c05f5b85e8f69dd9748b9588698b5c"
   sha256 Hardware::CPU.arm? ? arm64_sha256 : x64_sha256
   license "MIT"
 
