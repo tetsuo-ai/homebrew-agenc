@@ -1,10 +1,10 @@
 class Agenc < Formula
   desc "Daemon-backed, terminal-native coding agent"
   homepage "https://github.com/tetsuo-ai/agenc-core"
-  url "https://github.com/tetsuo-ai/agenc-releases/releases/download/agenc-v0.17.0/agenc-runtime-0.17.0-darwin-#{Hardware::CPU.arm? ? "arm64" : "x64"}-node26-abi147.tar.gz"
-  version "0.17.0"
-  arm64_sha256 = "2dfa6d4e7b83e2cc617d81e8b6a41c5ff7cd725ef0eb7dd19fbc21707afb5a49"
-  x64_sha256 = "7d39aaa0c54782d45fe41a08ba6fe78f7f6616bb6489795db339ff831a7ed5f1"
+  url "https://github.com/tetsuo-ai/agenc-releases/releases/download/agenc-v0.19.0/agenc-runtime-0.19.0-darwin-#{Hardware::CPU.arm? ? "arm64" : "x64"}-node26-abi147.tar.gz"
+  version "0.19.0"
+  arm64_sha256 = "094ffa5cb95dde199d59ff5c759f5fe5a865dc7a19be51a8ee6c1fa74bcd503a"
+  x64_sha256 = "8ae4044a38b28128dbadc61c112dcba346b91434c5bbe9e4c68ee6ac541b69fd"
   sha256 Hardware::CPU.arm? ? arm64_sha256 : x64_sha256
   license "MIT"
 
@@ -26,6 +26,10 @@ class Agenc < Formula
       #!/bin/sh
       if [ -z "${AGENC_HOME:-}" ]; then
         export AGENC_HOME="${HOME}/.agenc"
+      fi
+      # Homebrew owns upgrades (brew upgrade agenc); keep the in-app update prompt off.
+      if [ -z "${DISABLE_AUTOUPDATER:-}" ]; then
+        export DISABLE_AUTOUPDATER=1
       fi
       if [ -n "${PATH:-}" ]; then
         export PATH="#{node_bin.dirname}:$PATH"
