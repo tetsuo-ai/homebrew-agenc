@@ -26,6 +26,12 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
+      # brew test-bot's cleanup creates /usr/local/libexec, and the Intel runner image keeps
+      # /usr/local owned by root, so make that one folder for the runner first.
+      - name: Let brew create /usr/local/libexec
+        if: runner.arch == 'X64'
+        run: sudo mkdir -p /usr/local/libexec && sudo chown "$(id -un)" /usr/local/libexec
+
       - run: brew test-bot --only-cleanup-before
       - run: brew test-bot --only-setup
       - run: brew test-bot --only-tap-syntax
